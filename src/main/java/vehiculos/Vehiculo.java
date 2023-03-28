@@ -23,14 +23,14 @@ public class Vehiculo {
         this.fabricante = fabricante;
         CantidadVehiculos++;
         
-        // Se suma 1 al contador del diccionario de la cantidad de vehículos por fabricante
+        // Se suma 1 al contador del diccionario de la cantidad de vehiculos por fabricante
         if (Fabricante.vehiculosPorFabricante.containsKey(fabricante)) {
             Fabricante.vehiculosPorFabricante.put(fabricante, Fabricante.vehiculosPorFabricante.get(fabricante) + 1);
         } else {
             Fabricante.vehiculosPorFabricante.put(fabricante, 1);
         }
 
-        // Se suma 1 al contador del diccionario de la cantidad de vehículos por pais
+        // Se suma 1 al contador del diccionario de la cantidad de vehiculos por pais
         if (Pais.vehiculosPorPais.containsKey(fabricante.getPais())) {
             Pais.vehiculosPorPais.put(fabricante.getPais(), Pais.vehiculosPorPais.get(fabricante.getPais()) + 1);
         } else {
@@ -40,11 +40,9 @@ public class Vehiculo {
 
     // METHODS
     public static String vehiculosPorTipo() {
-        return  String.format("""
-                Automoviles: %s
-                Camionetas: %s
-                Camiones: %s
-                """, Automovil.getCantidadAutomoviles(), Camioneta.getCantidadCamionetas(), Camion.getCantidadCamiones());
+        return "Automoviles: " + Automovil.getCantidadAutomoviles()+
+				"\nCamionetas: " + Camioneta.getCantidadCamionetas() +
+				"\nCamiones: " + Camion.getCantidadCamiones();
     }
 
     // GETTERS AND SETTERS
