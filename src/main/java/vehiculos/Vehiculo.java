@@ -3,16 +3,16 @@ package vehiculos;
 public class Vehiculo {
     private static int CantidadVehiculos;
     private String placa;
-    private int puertas;
-    private int velocidadMaxima;
     private String nombre;
     private int precio;
+    private int velocidadMaxima;
+    private Fabricante fabricante;
+    private int puertas;
     private int peso;
     private String traccion;
-    private String fabricante;
 
     public Vehiculo(String placa, int puertas, int velocidadMaxima, String nombre, int precio, int peso,
-            String traccion, String fabricante) {
+            String traccion, Fabricante fabricante) {
         this.placa = placa;
         this.puertas = puertas;
         this.velocidadMaxima = velocidadMaxima;
@@ -22,6 +22,20 @@ public class Vehiculo {
         this.traccion = traccion;
         this.fabricante = fabricante;
         CantidadVehiculos++;
+        
+        // Se suma 1 al contador del diccionario de la cantidad de vehículos por fabricante
+        if (Fabricante.vehiculosPorFabricante.containsKey(fabricante)) {
+            Fabricante.vehiculosPorFabricante.put(fabricante, Fabricante.vehiculosPorFabricante.get(fabricante) + 1);
+        } else {
+            Fabricante.vehiculosPorFabricante.put(fabricante, 1);
+        }
+
+        // Se suma 1 al contador del diccionario de la cantidad de vehículos por pais
+        if (Pais.vehiculosPorPais.containsKey(fabricante.getPais())) {
+            Pais.vehiculosPorPais.put(fabricante.getPais(), Pais.vehiculosPorPais.get(fabricante.getPais()) + 1);
+        } else {
+            Pais.vehiculosPorPais.put(fabricante.getPais(), 1);
+        }
     }
 
     // METHODS
@@ -98,11 +112,11 @@ public class Vehiculo {
         this.traccion = traccion;
     }
 
-    public String getFabricante() {
+    public Fabricante getFabricante() {
         return fabricante;
     }
 
-    public void setFabricante(String fabricante) {
+    public void setFabricante(Fabricante fabricante) {
         this.fabricante = fabricante;
     }
 }

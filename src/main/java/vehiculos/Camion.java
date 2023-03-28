@@ -6,12 +6,10 @@ public class Camion extends Vehiculo {
     private int puertas = 2;
     private int velocidadMaxima = 80;
     private String traccion = "4X2";
-    
-    public Camion(String placa, int puertas, int velocidadMaxima, String nombre, int precio, int peso, String traccion,
-            String fabricante, int ejes) {
-        super(placa, puertas, velocidadMaxima, nombre, precio, peso, traccion, fabricante);
+
+    public Camion(String placa, String nombre, int precio, int peso, Fabricante fabricante, int ejes) {
+        super(placa, 2, 80, nombre, precio, peso, "4X2", fabricante);
         this.ejes = ejes;
-        cantidadCamiones++;
     }
 
     // GETTERS AND SETTERS
